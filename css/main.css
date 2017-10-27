@@ -1,3 +1,8 @@
-h1 {
-  color: blue;
+body {
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  background: #68FFBC;
+  text-align: center;
 }
+
+h1 {}

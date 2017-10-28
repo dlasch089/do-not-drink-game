@@ -97,8 +97,18 @@ function startTimeOut() {
 
 
 CreateGame.prototype.createChallenge = function(array) {
-  this.action = document.getElementById('action-section')
+  this.action = document.getElementById('action-section');
+  this.buttonLeft = this.action.children[0];
+  this.buttonRight = this.action.children[1];
   this.main.children[0].innerHTML = array[0];
-  this.action.children[0].innerHTML = array[1];
-  this.action.children[1].innerHTML = array[2];
+  this.buttonLeft.innerHTML = array[1];
+  this.buttonRight.innerHTML = array[2];
+  this.buttonLeft.addEventListener('click', function() {
+    console.log(array[3]);
+    return array[3];
+  });
+  this.buttonRight.addEventListener('click', function() {
+    console.log(array[4]);
+    return array[4];
+  });
 };

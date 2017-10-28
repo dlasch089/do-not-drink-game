@@ -20,13 +20,14 @@ function startScreen() {
   main.appendChild(divAround);
   var text = document.createElement('h1');
   text.innerHTML = 'Do The Opposite!'.toUpperCase();
+  divAround.appendChild(text);
   text.setAttribute('class', 'padding-startscreen');
   var startButton = document.createElement('button');
   startButton.innerHTML = "Let's Go!".toUpperCase();
   startButton.setAttribute('class', 'button');
   startButton.setAttribute('id', 'ghost-btn');
 
-  divAround.appendChild(text);
+
   divAround.appendChild(startButton);
 
   startButton.addEventListener('click', function() {
@@ -47,7 +48,6 @@ CreateGame.prototype.startGame = function(screenBefore) {
     deleteGame();
     this.buildGame();
     this.pickChallenge();
-    clearTimeout(this.timeOut);
   }
 
 };
@@ -72,6 +72,7 @@ CreateGame.prototype.showTimeOut = function() {
   timer.setAttribute('class', 'round');
   numbers.setAttribute('id', 'timer');
   timer.appendChild(numbers);
+  clearTimeout(this.endTimer); // to clear the timer and set it to 5 again
 }
 
 CreateGame.prototype.showChallenge = function() {
@@ -101,14 +102,16 @@ CreateGame.prototype.showScore = function() {
   score.appendChild(numbers);
 };
 
+
 CreateGame.prototype.startTimeOut = function() {
-  var timer = document.getElementById('timer')
+
+  var timer = document.getElementById('timer');
   setInterval(function() {
     timer.innerText -= 1;
   }, 1000);
-  this.test = setTimeout(function() {
+  this.endTimer = setTimeout(function() {
     gameOver();
-  }, timer.innerText * 1200);
+  }, this.timeOut * 1200);
 
 };
 
@@ -158,10 +161,22 @@ function deleteGame() {
 
 function gameOver() {
   deleteGame();
+  statusMessage('You suck!');
   // startScreen();
 }
 
 CreateGame.prototype.gameWon = function() {
   deleteGame();
+  statusMessage('You rock! Everybody raise their glasses!');
   //needs to be called when the array of challenges is empty (level 10)
 };
+
+function statusMessage(status) {
+  var main = document.getElementById('main');
+  var divAround = document.createElement('div');
+  divAround.setAttribute('id', 'div-around');
+  main.appendChild(divAround);
+  var text = document.createElement('h1');
+  text.innerHTML = ('' + status).toUpperCase();
+  divAround.appendChild(text);
+}

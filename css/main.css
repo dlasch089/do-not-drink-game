@@ -10,7 +10,7 @@ body {
   font-family: 'Roboto Slab', serif;
   color: white;
   background: green;
-  /*#68FFBC*/
+  /*#35FFA6*/
   text-align: center;
 }
 
@@ -19,7 +19,7 @@ button {
   min-width: 150px;
   /* max-width: 300px; */
   margin: 2%;
-  padding: 4% 15%;
+  padding: 4% 11%;
 }
 
 #ghost-btn {
@@ -32,9 +32,9 @@ button {
 #attention-btn {
   background: white;
   border-color: #F2F2F2;
-  color: #68FFBC;
+  color: green;
+  /*#35FFA6*/
   border-style: none;
-  padding: 4.5px;
 }
 
 h1 {
@@ -73,11 +73,12 @@ header, footer, main {
   /*min-height: 200px;*/
 }
 
-.action-section {
+#action-section {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  padding: 8% 0;
 }
 
 .padding-startscreen {

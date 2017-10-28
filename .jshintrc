@@ -6,6 +6,7 @@
     "console": true,
     "document": true,
     "window":true,
-    "$": true
+    "$": true,
+    "CreateGame": true
   }
 }

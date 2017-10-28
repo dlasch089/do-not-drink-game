@@ -52,6 +52,7 @@ CreateGame.prototype.buildGame = function() {
   this.showTimeOut();
   this.showChallenge();
   this.showScore();
+  this.startTimeOut();
 };
 
 CreateGame.prototype.showTimeOut = function() {
@@ -60,7 +61,7 @@ CreateGame.prototype.showTimeOut = function() {
   var numbers = document.createElement('p');
   numbers.innerHTML = game.timeOut;
   timer.setAttribute('class', 'round');
-  timer.setAttribute('id', 'timer');
+  numbers.setAttribute('id', 'timer');
   timer.appendChild(numbers);
 }
 
@@ -91,9 +92,15 @@ CreateGame.prototype.showScore = function() {
   score.appendChild(numbers);
 };
 
-function startTimeOut() {
-
-}
+CreateGame.prototype.startTimeOut = function() {
+  var timer = document.getElementById('timer')
+  for (var ix = timer.innerText; ix >= 0; timer.innerText >= 0) {
+    setInterval(function() {
+      timer.innerText -= 1;
+    }, 1000);
+  }
+  gameOver();
+};
 
 CreateGame.prototype.pickChallenge = function() {
   var randomNumber = Math.floor(Math.random() * game.challenge.length);
@@ -117,3 +124,11 @@ CreateGame.prototype.createChallenge = function(array) {
     return array[4];
   });
 };
+
+// CreateGame.prototype.validateAnswer = function() {
+//   if ()
+// }
+
+function gameOver() {
+  startScreen();
+}

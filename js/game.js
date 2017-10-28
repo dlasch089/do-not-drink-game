@@ -177,6 +177,7 @@ function statusMessage(status) {
   divAround.setAttribute('id', 'div-around');
   main.appendChild(divAround);
   var text = document.createElement('h1');
+  text.setAttribute('class', 'padding-startscreen');
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
 }

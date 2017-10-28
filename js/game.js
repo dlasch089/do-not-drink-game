@@ -5,7 +5,7 @@ function CreateGame()  {
     ["Click 'left'!", "right", "left", "true", "false"],
     ["Click 'right'!", "right", "left", "false", "true"]
   ];
-  this.timeOut = 3;
+  this.timeOut = 5;
   this.score = 0;
   this.header = document.getElementById('header');
   this.main = document.getElementById('main');
@@ -30,16 +30,25 @@ function startScreen() {
   divAround.appendChild(startButton);
 
   startButton.addEventListener('click', function() {
-    game.startGame();
+    game.startGame("startScreen");
   });
 }
 
 
-CreateGame.prototype.startGame = function() {
-  console.log("Let's start the Game!!");
-  this.deleteStartScreen();
-  this.buildGame();
-  this.pickChallenge();
+CreateGame.prototype.startGame = function(screenBefore) {
+  if (screenBefore === "startScreen") {
+    console.log("Let's start the Game!!");
+    this.deleteStartScreen();
+    this.buildGame();
+    this.pickChallenge();
+  } else if (this.challenge.length === 0) {
+    this.gameWon();
+  } else {
+    deleteGame();
+    this.buildGame();
+    this.pickChallenge();
+    clearTimeout(this.timeOut);
+  }
 
 };
 
@@ -59,7 +68,7 @@ CreateGame.prototype.showTimeOut = function() {
   var timer = document.createElement('div');
   this.header.appendChild(timer);
   var numbers = document.createElement('p');
-  numbers.innerHTML = game.timeOut;
+  numbers.innerHTML = this.timeOut;
   timer.setAttribute('class', 'round');
   numbers.setAttribute('id', 'timer');
   timer.appendChild(numbers);
@@ -94,18 +103,22 @@ CreateGame.prototype.showScore = function() {
 
 CreateGame.prototype.startTimeOut = function() {
   var timer = document.getElementById('timer')
-  for (var ix = timer.innerText; ix >= 0; timer.innerText >= 0) {
-    setInterval(function() {
-      timer.innerText -= 1;
-    }, 1000);
-  }
-  gameOver();
+  setInterval(function() {
+    timer.innerText -= 1;
+  }, 1000);
+  this.test = setTimeout(function() {
+    gameOver();
+  }, timer.innerText * 1200);
+
 };
 
 CreateGame.prototype.pickChallenge = function() {
   var randomNumber = Math.floor(Math.random() * game.challenge.length);
-  var array = this.challenge[randomNumber];
-  this.createChallenge(array);
+  var array = this.challenge;
+  var challenge = this.challenge[randomNumber];
+
+  this.createChallenge(challenge);
+  array.splice(randomNumber, 1);
 };
 
 CreateGame.prototype.createChallenge = function(array) {
@@ -115,20 +128,40 @@ CreateGame.prototype.createChallenge = function(array) {
   this.main.children[0].innerHTML = array[0];
   this.buttonLeft.innerHTML = array[1];
   this.buttonRight.innerHTML = array[2];
+
   this.buttonLeft.addEventListener('click', function() {
     console.log(array[3]);
-    return array[3];
+    game.validateAnswer(array[3]);
   });
   this.buttonRight.addEventListener('click', function() {
     console.log(array[4]);
-    return array[4];
+    game.validateAnswer(array[4]);
   });
 };
 
-// CreateGame.prototype.validateAnswer = function() {
-//   if ()
-// }
+CreateGame.prototype.validateAnswer = function(answer) {
+  var validate = answer;
+  if (validate === "true") {
+    game.score += 1;
+    this.startGame("gameBefore");
+  } else {
+    gameOver();
+  }
+
+};
+
+function deleteGame() {
+  game.header.innerHTML = "";
+  game.main.innerHTML = "";
+  game.footer.innerHTML = "";
+}
 
 function gameOver() {
-  startScreen();
+  deleteGame();
+  // startScreen();
 }
+
+CreateGame.prototype.gameWon = function() {
+  deleteGame();
+  //needs to be called when the array of challenges is empty (level 10)
+};

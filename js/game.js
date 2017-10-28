@@ -2,7 +2,8 @@
 
 function CreateGame()  {
   this.challenge = [
-    ["Click 'left'!", "right", "left", "true", "false"]
+    ["Click 'left'!", "right", "left", "true", "false"],
+    ["Click 'right'!", "right", "left", "false", "true"]
   ];
   this.timeOut = 3;
   this.score = 0;
@@ -38,7 +39,7 @@ CreateGame.prototype.startGame = function() {
   console.log("Let's start the Game!!");
   this.deleteStartScreen();
   this.buildGame();
-  this.createChallenge(array);
+  this.pickChallenge();
 
 };
 
@@ -94,7 +95,11 @@ function startTimeOut() {
 
 }
 
-
+CreateGame.prototype.pickChallenge = function() {
+  var randomNumber = Math.floor(Math.random() * game.challenge.length);
+  var array = this.challenge[randomNumber];
+  this.createChallenge(array);
+};
 
 CreateGame.prototype.createChallenge = function(array) {
   this.action = document.getElementById('action-section');

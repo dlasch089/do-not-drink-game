@@ -44,16 +44,21 @@ function startScreen() {
 function getReady() {
   deleteGame();
   var getReadyNumbers = document.createElement('h1');
-  getReadyNumbers.setAttribute('class', 'padding-startscreen');
+  // getReadyNumbers.setAttribute('class', 'padding-startscreen');
   getReadyNumbers.setAttribute('class', 'getReady');
   getReadyNumbers.innerText = 3;
   game.main.appendChild(getReadyNumbers);
+  var reminder = document.createElement('h1');
+  // reminder.setAttribute('class', 'padding-startscreen');
+  reminder.innerText = 'DO THE OPPOSITE!';
+  game.main.appendChild(reminder);
   setInterval(function() {
     getReadyNumbers.innerText -= 1;
   }, 1000);
   var getReadyTimeOut = setTimeout(function() {
     game.startGame("startScreen");
   }, 3000);
+
 }
 
 CreateGame.prototype.startGame = function(screenBefore) {

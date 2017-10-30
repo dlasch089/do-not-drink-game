@@ -47,6 +47,8 @@ h1 {
 
 .getReady {
   font-size: 15rem;
+  margin-top: 10%;
+  min-height: 0;
 }
 
 .round {

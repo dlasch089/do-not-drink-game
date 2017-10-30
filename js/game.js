@@ -11,6 +11,7 @@ function CreateGame()  {
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
     ["CLICK:", " ", "HERE!", "true", "false"]
   ];
+  this.questions = this.challenge;
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
   this.score = 0;
@@ -80,7 +81,7 @@ CreateGame.prototype.showTimeOut = function() {
   numbers.setAttribute('id', 'timer');
   timer.appendChild(numbers);
   clearTimeout(this.endTimer); // to clear the timer and set it to 5 again
-}
+};
 
 CreateGame.prototype.showChallenge = function() {
   var command = document.createElement('h1');
@@ -147,11 +148,11 @@ CreateGame.prototype.createChallenge = function(array) {
   this.buttonRight.innerHTML = array[2];
 
   this.buttonLeft.addEventListener('click', function() {
-    console.log(array[3]);
+    // console.log(array[3]);
     game.validateAnswer(array[3]);
   });
   this.buttonRight.addEventListener('click', function() {
-    console.log(array[4]);
+    // console.log(array[4]);
     game.validateAnswer(array[4]);
   });
 };
@@ -196,6 +197,8 @@ function statusMessage(status) {
   text.setAttribute('class', 'padding-startscreen');
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
+
+
   var resetButton = document.createElement('button');
   resetButton.innerHTML = "Play again?".toUpperCase();
   resetButton.setAttribute('class', 'button');

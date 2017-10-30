@@ -11,7 +11,7 @@ function CreateGame()  {
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
     ["CLICK:", " ", "HERE!", "true", "false"],
     ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
-    ["Press the opposite of 'right'", "left ", "right", "false", "true"],
+    ["Click opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -37,14 +37,20 @@ function startScreen() {
   startButton.setAttribute('id', 'ghost-btn');
   divAround.appendChild(startButton);
   startButton.addEventListener('click', function() {
-    game.startGame("startScreen");
+    game.startGame("startScreen"); //needs to go in the getReady
   });
+}
+
+function getReady() {
+  deleteGame();
+  var readySetGo = document.createElement('p');
+  this.main.appendChild(readySetGo);
 }
 
 CreateGame.prototype.startGame = function(screenBefore) {
   if (screenBefore === "startScreen") {
     console.log("Let's start the Game!!");
-    this.deleteStartScreen();
+    deleteGame();
     this.buildGame();
     this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
@@ -55,11 +61,6 @@ CreateGame.prototype.startGame = function(screenBefore) {
     this.buildGame();
     this.pickChallenge();
   }
-};
-
-CreateGame.prototype.deleteStartScreen = function() {
-  var parent = document.getElementById('div-around');
-  parent.remove();
 };
 
 CreateGame.prototype.buildGame = function() {
@@ -170,7 +171,7 @@ function statusMessage(status) {
   resetButton.setAttribute('id', 'ghost-btn');
   divAround.appendChild(resetButton);
   resetButton.addEventListener('click', function() {
-    game.deleteStartScreen();
+    deleteGame();
     game.resetScore();
     startScreen();
   });

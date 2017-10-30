@@ -42,7 +42,7 @@ h1 {
   font-size: 3rem;
   width: 100%;
   text-shadow: 2px 2px #DCDCDC;
-  min-height: 150px;
+  min-height: 2em;
 }
 
 .round {

@@ -11,6 +11,7 @@ function CreateGame()  {
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
     ["CLICK:", " ", "HERE!", "true", "false"]
   ];
+  this.challengeLength = this.challenge.length;
   this.timeOut = 3;
   this.score = 0;
   this.header = document.getElementById('header');
@@ -111,7 +112,7 @@ CreateGame.prototype.showScore = function() {
   numbers.innerHTML = game.score;
   scoreSection.appendChild(numbers);
   var levels = document.createElement('p');
-  levels.innerHTML = ' /' + game.challenge.length;
+  levels.innerHTML = ' /' + this.challengeLength;
   scoreSection.appendChild(levels);
 };
 
@@ -195,4 +196,13 @@ function statusMessage(status) {
   text.setAttribute('class', 'padding-startscreen');
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
+  var resetButton = document.createElement('button');
+  resetButton.innerHTML = "Play again?".toUpperCase();
+  resetButton.setAttribute('class', 'button');
+  resetButton.setAttribute('id', 'ghost-btn');
+  divAround.appendChild(resetButton);
+  resetButton.addEventListener('click', function() {
+    game.deleteStartScreen();
+    startScreen();
+  });
 }

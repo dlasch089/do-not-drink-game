@@ -99,13 +99,20 @@ CreateGame.prototype.showChallenge = function() {
 };
 
 CreateGame.prototype.showScore = function() {
-  var score = document.createElement('div');
-  this.footer.appendChild(score);
+  var scoreSection = document.createElement('div');
+  scoreSection.setAttribute('id', 'score');
+  scoreSection.setAttribute('class', 'fadeInOut');
+  this.footer.appendChild(scoreSection);
+  var scoreTitle = document.createElement('p');
+  scoreTitle.innerHTML = 'score: ';
+  scoreSection.appendChild(scoreTitle);
+  scoreSection.appendChild(scoreTitle);
   var numbers = document.createElement('p');
   numbers.innerHTML = game.score;
-  score.setAttribute('class', 'round round-bottom');
-  score.setAttribute('id', 'score');
-  score.appendChild(numbers);
+  scoreSection.appendChild(numbers);
+  var levels = document.createElement('p');
+  levels.innerHTML = ' /' + game.challenge.length;
+  scoreSection.appendChild(levels);
 };
 
 

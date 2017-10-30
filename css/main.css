@@ -45,6 +45,10 @@ h1 {
   min-height: 2em;
 }
 
+.getReady {
+  font-size: 15rem;
+}
+
 .round {
   display: flex;
   justify-content: center;

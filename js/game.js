@@ -37,14 +37,23 @@ function startScreen() {
   startButton.setAttribute('id', 'ghost-btn');
   divAround.appendChild(startButton);
   startButton.addEventListener('click', function() {
-    game.startGame("startScreen"); //needs to go in the getReady
+    getReady();
   });
 }
 
 function getReady() {
   deleteGame();
-  var readySetGo = document.createElement('p');
-  this.main.appendChild(readySetGo);
+  var getReadyNumbers = document.createElement('h1');
+  getReadyNumbers.setAttribute('class', 'padding-startscreen');
+  getReadyNumbers.setAttribute('class', 'getReady');
+  getReadyNumbers.innerText = 3;
+  game.main.appendChild(getReadyNumbers);
+  setInterval(function() {
+    getReadyNumbers.innerText -= 1;
+  }, 1000);
+  var getReadyTimeOut = setTimeout(function() {
+    game.startGame("startScreen");
+  }, 3000);
 }
 
 CreateGame.prototype.startGame = function(screenBefore) {
@@ -173,7 +182,7 @@ function statusMessage(status) {
   resetButton.addEventListener('click', function() {
     deleteGame();
     game.resetScore();
-    startScreen();
+    getReady();
   });
 }
 

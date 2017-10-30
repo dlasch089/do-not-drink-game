@@ -11,7 +11,6 @@ function CreateGame()  {
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
     ["CLICK:", " ", "HERE!", "true", "false"]
   ];
-  this.questions = this.challenge;
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
   this.score = 0;
@@ -49,15 +48,15 @@ CreateGame.prototype.startGame = function(screenBefore) {
     console.log("Let's start the Game!!");
     this.deleteStartScreen();
     this.buildGame();
+    this.copyChallenge();
     this.pickChallenge();
-  } else if (this.challenge.length === 0) {
+  } else if (this.challengeCopy.length === 0) {
     this.gameWon();
   } else {
     deleteGame();
     this.buildGame();
     this.pickChallenge();
   }
-
 };
 
 CreateGame.prototype.deleteStartScreen = function() {
@@ -70,6 +69,7 @@ CreateGame.prototype.buildGame = function() {
   this.showChallenge();
   this.showScore();
   this.startTimeOut();
+
 };
 
 CreateGame.prototype.showTimeOut = function() {
@@ -128,33 +128,6 @@ CreateGame.prototype.startTimeOut = function() {
     gameOver();
   }, this.timeOut * 1200);
 
-};
-
-CreateGame.prototype.pickChallenge = function() {
-  var randomNumber = Math.floor(Math.random() * game.challenge.length);
-  var array = this.challenge;
-  var challenge = this.challenge[randomNumber];
-
-  this.createChallenge(challenge);
-  array.splice(randomNumber, 1);
-};
-
-CreateGame.prototype.createChallenge = function(array) {
-  this.action = document.getElementById('action-section');
-  this.buttonLeft = this.action.children[0];
-  this.buttonRight = this.action.children[1];
-  this.main.children[0].innerHTML = array[0];
-  this.buttonLeft.innerHTML = array[1];
-  this.buttonRight.innerHTML = array[2];
-
-  this.buttonLeft.addEventListener('click', function() {
-    // console.log(array[3]);
-    game.validateAnswer(array[3]);
-  });
-  this.buttonRight.addEventListener('click', function() {
-    // console.log(array[4]);
-    game.validateAnswer(array[4]);
-  });
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {

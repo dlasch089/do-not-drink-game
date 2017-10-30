@@ -8,6 +8,9 @@
     "window":true,
     "$": true,
     "CreateGame": true,
-    "game": true
+    "game": true,
+    "setInterval": true,
+    "setTimeout": true,
+    "clearTimeout": true
   }
 }

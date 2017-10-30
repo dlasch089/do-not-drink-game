@@ -22,24 +22,43 @@ function CreateGame()  {
 
 }
 
+function rules() {
+  console.log('The rules are easy!');
+}
+
 function startScreen() {
   var main = document.getElementById('main');
   var divAround = document.createElement('div');
   divAround.setAttribute('id', 'div-around');
   main.appendChild(divAround);
+  // Display the name of the Game:
   var text = document.createElement('h1');
   text.innerHTML = 'Do The Opposite!'.toUpperCase();
-  divAround.appendChild(text);
   text.setAttribute('class', 'padding-startscreen');
+  divAround.appendChild(text);
+  // Display the Reset-Button:
   var startButton = document.createElement('button');
   startButton.innerHTML = "Let's Go!".toUpperCase();
   startButton.setAttribute('class', 'button');
-  startButton.setAttribute('id', 'ghost-btn');
+  startButton.setAttribute('id', 'attention-btn');
   divAround.appendChild(startButton);
+  // Display the Reset-Button:
+  var resetButton = document.createElement('button');
+  resetButton.innerHTML = "Rules".toUpperCase();
+  resetButton.setAttribute('class', 'button');
+  resetButton.setAttribute('id', 'ghost-btn');
+  divAround.appendChild(resetButton);
+  //Add Click-Events:
   startButton.addEventListener('click', function() {
     getReady();
   });
+
+  resetButton.addEventListener('click', function() {
+    rules();
+  });
 }
+
+
 
 function getReady() {
   deleteGame();
@@ -55,7 +74,7 @@ function getReady() {
   setInterval(function() {
     getReadyNumbers.innerText -= 1;
   }, 1000);
-  var getReadyTimeOut = setTimeout(function() {
+  setTimeout(function() {
     game.startGame("startScreen");
   }, 3000);
 

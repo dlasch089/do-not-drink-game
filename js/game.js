@@ -9,7 +9,9 @@ function CreateGame()  {
     ["Press play!", "Play!", "|>", "false", "true"],
     ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
-    ["CLICK:", " ", "HERE!", "true", "false"]
+    ["CLICK:", " ", "HERE!", "true", "false"],
+    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    ["Press the opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -33,22 +35,18 @@ function startScreen() {
   startButton.innerHTML = "Let's Go!".toUpperCase();
   startButton.setAttribute('class', 'button');
   startButton.setAttribute('id', 'ghost-btn');
-
-
   divAround.appendChild(startButton);
-
   startButton.addEventListener('click', function() {
     game.startGame("startScreen");
   });
 }
-
 
 CreateGame.prototype.startGame = function(screenBefore) {
   if (screenBefore === "startScreen") {
     console.log("Let's start the Game!!");
     this.deleteStartScreen();
     this.buildGame();
-    this.copyChallenge();
+    this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
   } else if (this.challengeCopy.length === 0) {
     this.gameWon();
@@ -69,7 +67,6 @@ CreateGame.prototype.buildGame = function() {
   this.showChallenge();
   this.showScore();
   this.startTimeOut();
-
 };
 
 CreateGame.prototype.showTimeOut = function() {
@@ -106,7 +103,7 @@ CreateGame.prototype.showScore = function() {
   scoreSection.setAttribute('class', 'fadeInOut');
   this.footer.appendChild(scoreSection);
   var scoreTitle = document.createElement('p');
-  scoreTitle.innerHTML = 'score: ';
+  scoreTitle.innerHTML = 'level: ';
   scoreSection.appendChild(scoreTitle);
   scoreSection.appendChild(scoreTitle);
   var numbers = document.createElement('p');
@@ -119,7 +116,6 @@ CreateGame.prototype.showScore = function() {
 
 
 CreateGame.prototype.startTimeOut = function() {
-
   var timer = document.getElementById('timer');
   setInterval(function() {
     timer.innerText -= 1;
@@ -127,7 +123,6 @@ CreateGame.prototype.startTimeOut = function() {
   this.endTimer = setTimeout(function() {
     gameOver();
   }, this.timeOut * 1200);
-
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {
@@ -138,7 +133,6 @@ CreateGame.prototype.validateAnswer = function(answer) {
   } else {
     gameOver();
   }
-
 };
 
 function deleteGame() {
@@ -158,7 +152,6 @@ CreateGame.prototype.gameWon = function() {
   deleteGame();
   clearTimeout(game.endTimer);
   statusMessage("You're focused! Everybody raise their glasses!");
-  //needs to be called when the array of challenges is empty (level 10)
 };
 
 function statusMessage(status) {
@@ -171,7 +164,6 @@ function statusMessage(status) {
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
 
-
   var resetButton = document.createElement('button');
   resetButton.innerHTML = "Play again?".toUpperCase();
   resetButton.setAttribute('class', 'button');
@@ -179,6 +171,11 @@ function statusMessage(status) {
   divAround.appendChild(resetButton);
   resetButton.addEventListener('click', function() {
     game.deleteStartScreen();
+    game.resetScore();
     startScreen();
   });
 }
+
+CreateGame.prototype.resetScore = function() {
+  this.score = 0;
+};

@@ -3,9 +3,15 @@
 function CreateGame()  {
   this.challenge = [
     ["Click 'left'!", "right", "left", "true", "false"],
-    ["Click 'right'!", "right", "left", "false", "true"]
+    ["Click the button on the right!", "right", "left", "true", "false"],
+    ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
+    ["Don't click any button!", "Why..", "..not?", "true", "true"],
+    ["Press play!", "Play!", "|>", "false", "true"],
+    ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
+    ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
+    ["CLICK:", " ", "HERE!", "true", "false"]
   ];
-  this.timeOut = 5;
+  this.timeOut = 3;
   this.score = 0;
   this.header = document.getElementById('header');
   this.main = document.getElementById('main');
@@ -161,13 +167,15 @@ function deleteGame() {
 
 function gameOver() {
   deleteGame();
-  statusMessage('You suck!');
+  clearTimeout(game.endTimer);
+  statusMessage("GameOver - go home!");
   // startScreen();
 }
 
 CreateGame.prototype.gameWon = function() {
   deleteGame();
-  statusMessage('You rock! Everybody raise their glasses!');
+  clearTimeout(game.endTimer);
+  statusMessage("You're focused! Everybody raise their glasses!");
   //needs to be called when the array of challenges is empty (level 10)
 };
 

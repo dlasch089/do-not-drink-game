@@ -9,7 +9,7 @@ html {
 body {
   font-family: 'Roboto Slab', serif;
   color: white;
-  background: green;
+  background: #35FFA6;
   /*#35FFA6*/
   text-align: center;
 }
@@ -32,7 +32,7 @@ button {
 #attention-btn {
   background: white;
   border-color: #F2F2F2;
-  color: green;
+  color: #35FFA6;
   /*#35FFA6*/
   border-style: none;
 }
@@ -41,6 +41,7 @@ h1 {
   font-weight: bolder;
   font-size: 3rem;
   width: 100%;
+  text-shadow: 2px 2px #DCDCDC;
 }
 
 .round {

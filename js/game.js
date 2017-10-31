@@ -19,6 +19,7 @@ function CreateGame()  {
   this.header = document.getElementById('header');
   this.main = document.getElementById('main');
   this.footer = document.getElementById('footer');
+  this.container = document.getElementById('container');
   this.wonMemes = ['https://giphy.com/embed/QdXfVLeFgNvG',
     'https://giphy.com/embed/aurUBBayxC55m',
     'https://giphy.com/embed/7rWx2wzFOPZEQ',
@@ -34,7 +35,10 @@ function CreateGame()  {
 }
 
 CreateGame.prototype.rules = function() {
-  console.log('The rules are easy!');
+  console.log('Rules are easy!')
+  var popUp = document.createElement('div');
+  popUp.setAttribute('class', 'pop-up');
+  this.container.insertBefore(popUp, this.header);
 };
 
 CreateGame.prototype.startScreen = function() {

@@ -14,7 +14,7 @@ body {
   text-align: center;
 }
 
-.container {
+#container {
   height: 96vh;
   box-shadow: 0em 0em 1em #DCDCDC;
   margin: 1em;
@@ -63,6 +63,18 @@ h1 {
   width: 100%;
   text-shadow: 1.5px 1.5px #008B00;
   min-height: 2em;
+}
+
+.pop-up {
+  width: 92%;
+  position: absolute;
+  color: black;
+  border: solid 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 96vh;
 }
 
 .getReady {

@@ -128,7 +128,7 @@ header, footer, main {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 4% 0;
+  margin: 6% 0 4% 0;
   -webkit-filter: grayscale(1);
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);

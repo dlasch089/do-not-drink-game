@@ -21,11 +21,15 @@ function CreateGame()  {
   this.footer = document.getElementById('footer');
   this.wonMemes = ['https://giphy.com/embed/QdXfVLeFgNvG',
     'https://giphy.com/embed/aurUBBayxC55m',
-    'https://giphy.com/embed/7rWx2wzFOPZEQ'
+    'https://giphy.com/embed/7rWx2wzFOPZEQ',
+    "https://giphy.com/embed/J0ySNzZ5APILC",
+    "https://giphy.com/embed/5MDk34NOY6ili"
   ];
   this.lostMemes = ['https://giphy.com/embed/26xBwu0ZZVWbG7gA0',
     "https://giphy.com/embed/AwkqAwhwqGzg4",
-    "https://giphy.com/embed/3ohfFp1ureujZgWSVa"
+    "https://giphy.com/embed/3ohfFp1ureujZgWSVa",
+    "https://giphy.com/embed/MyU87LnclCPhS",
+    "https://giphy.com/embed/1ryrwFNXqNjC8"
   ];
 }
 

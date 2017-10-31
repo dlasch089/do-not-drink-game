@@ -204,7 +204,7 @@ header, footer, main {
     padding: 2% 12%;
   }
   #div-around {
-    height: 100vh;
+    /*height: 100vh;*/
     max-width: 70%;
     display: flex;
     flex-direction: column;
@@ -212,7 +212,7 @@ header, footer, main {
     justify-content: center;
   }
   .padding-start-screen {
-    padding: 0 0;
+    padding: 25% 0 15%;
   }
   .padding-end-screen {
     padding: 0 0;

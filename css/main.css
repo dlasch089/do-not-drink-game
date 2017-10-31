@@ -19,6 +19,7 @@ body {
   box-shadow: 0em 0em 1em #DCDCDC;
   margin: 1em;
   background-color: #7bf7ab;
+  animation: fadeIn 1s;
 }
 
 button {
@@ -68,13 +69,28 @@ h1 {
 .pop-up {
   width: 92%;
   position: absolute;
-  color: black;
-  border: solid 10px black;
+  background-color: #f5fffa;
+  color: #7bf7ab;
+  border: solid 10px #7bf7ab;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+  flex-direction: column;
   height: 96vh;
+  padding: 10%;
+  font-size: 2rem;
+  animation: fadein 0.5s;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 1;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear;
+}
+
+#close-btn {
+  background: transparent;
+  border-color: #7bf7ab;
+  color: #7bf7ab;
+  border-style: solid;
+  border-width: 3px;
 }
 
 .getReady {
@@ -175,7 +191,7 @@ header, footer, main {
 #div-around {
   display: flex;
   flex-direction: column;
-  animation: fadein 2s;
+  animation: fadein 1s;
 }
 
 /* ---- Start the big Screen Design ---- */

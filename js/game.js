@@ -35,10 +35,29 @@ function CreateGame()  {
 }
 
 CreateGame.prototype.rules = function() {
-  console.log('Rules are easy!')
   var popUp = document.createElement('div');
   popUp.setAttribute('class', 'pop-up');
   this.container.insertBefore(popUp, this.header);
+  var rulesHeadline = document.createElement('h1');
+  rulesHeadline.innerHTML = "It's easy:".toUpperCase();
+  popUp.appendChild(rulesHeadline);
+  var rulesWin = document.createElement('p');
+  rulesWin.innerHTML = "// if you lose, you have to drink!".toUpperCase();
+  popUp.appendChild(rulesWin);
+  var rulesLose = document.createElement('p');
+  rulesLose.innerHTML = "// If you win, everbody else has to drink!".toUpperCase();
+  popUp.appendChild(rulesLose);
+  var closeButton = document.createElement('button');
+  closeButton.innerHTML = "close".toUpperCase();
+  closeButton.setAttribute('class', 'button');
+  closeButton.setAttribute('id', 'close-btn');
+  popUp.appendChild(closeButton);
+  closeButton.addEventListener('click', function() {
+    popUp.style.opacity = '0';
+    setTimeout(function() {
+      popUp.remove();
+    }, 500);
+  });
 };
 
 CreateGame.prototype.startScreen = function() {

@@ -211,7 +211,10 @@ header, footer, main {
     align-content: center;
     justify-content: center;
   }
-  .padding-startscreen {
+  .padding-start-screen {
+    padding: 0 0;
+  }
+  .padding-end-screen {
     padding: 0 0;
   }
 }

@@ -54,6 +54,7 @@ button {
   width: 100%;
   justify-content: center;
   padding: 8% 0;
+  animation: fadein 1s;
 }
 
 h1 {
@@ -68,6 +69,7 @@ h1 {
   font-size: 15rem;
   margin-top: 10%;
   min-height: 0;
+  animation: fadein 1s;
 }
 
 .round {
@@ -85,11 +87,7 @@ h1 {
   align-items: center;
   margin: 5%;
   border-width: 4px 4px 25px 4px;
-}
-
-.round-bottom {
-  border-top-width: 25px;
-  border-bottom-width: 3px;
+  animation: fadein 1s;
 }
 
 header, footer, main {
@@ -136,6 +134,16 @@ header, footer, main {
   filter: grayscale(100%);
   /*filter: url(#greyscale);*/
   filter: grey;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes turnAround {
@@ -155,6 +163,7 @@ header, footer, main {
 #div-around {
   display: flex;
   flex-direction: column;
+  animation: fadein 2s;
 }
 
 /* ---- Start the big Screen Design ---- */

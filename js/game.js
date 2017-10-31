@@ -3,15 +3,15 @@
 function CreateGame()  {
   this.challenge = [
     ["Click 'left'!", "right", "left", "true", "false"],
-    ["Click the button on the right!", "right", "left", "true", "false"],
-    ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
-    ["Don't click any button!", "Why..", "..not?", "true", "true"],
-    ["Press play!", "Play!", "|>", "false", "true"],
-    ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
-    ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
-    ["CLICK:", " ", "HERE!", "true", "false"],
-    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
-    ["Click opposite of 'right'", "left ", "right", "false", "true"],
+    // ["Click the button on the right!", "right", "left", "true", "false"],
+    // ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
+    // ["Don't click any button!", "Why..", "..not?", "true", "true"],
+    // ["Press play!", "Play!", "|>", "false", "true"],
+    // ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
+    // ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
+    // ["CLICK:", " ", "HERE!", "true", "false"],
+    // ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    // ["Click opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -19,7 +19,14 @@ function CreateGame()  {
   this.header = document.getElementById('header');
   this.main = document.getElementById('main');
   this.footer = document.getElementById('footer');
-
+  this.wonMemes = ['https://giphy.com/embed/QdXfVLeFgNvG',
+    'https://giphy.com/embed/aurUBBayxC55m',
+    'https://giphy.com/embed/7rWx2wzFOPZEQ'
+  ];
+  this.lostMemes = ['https://giphy.com/embed/26xBwu0ZZVWbG7gA0',
+    "https://giphy.com/embed/AwkqAwhwqGzg4",
+    "https://giphy.com/embed/3ohfFp1ureujZgWSVa"
+  ];
 }
 
 CreateGame.prototype.rules = function() {
@@ -35,7 +42,7 @@ CreateGame.prototype.startScreen = function() {
   // Display the name of the Game:
   var text = document.createElement('h1');
   text.innerHTML = 'Do The Opposite!'.toUpperCase();
-  text.setAttribute('class', 'padding-startscreen');
+  text.setAttribute('class', 'padding-start-screen');
   divAround.appendChild(text);
   // Display the Start-Button:
   var startButton = document.createElement('button');
@@ -182,6 +189,7 @@ CreateGame.prototype.deleteGame = function() {
 CreateGame.prototype.gameOver = function() {
   this.deleteGame();
   clearTimeout(this.endTimer);
+  this.pickMeme(this.lostMemes);
   this.statusMessage("GameOver - go home!");
   // startScreen();
 };
@@ -189,20 +197,29 @@ CreateGame.prototype.gameOver = function() {
 CreateGame.prototype.gameWon = function() {
   this.deleteGame();
   clearTimeout(this.endTimer);
-  this.statusMessage("You're focused! Everybody raise their glasses!");
+  this.pickMeme(this.wonMemes);
+  this.statusMessage("Everybody raise their glasses!");
+};
+
+CreateGame.prototype.pickMeme = function(status) {
+  var memeDiv = document.createElement('div');
+  memeDiv.setAttribute('class', 'memes');
+  this.main.appendChild(memeDiv);
+  var meme = document.createElement('iframe');
+  meme.setAttribute('src', status[Math.floor(Math.random() * status.length)]);
+  memeDiv.appendChild(meme);
 };
 
 CreateGame.prototype.statusMessage = function(status) {
   var self = this;
-  var main = document.getElementById('main');
+  var main = this.main;
   var divAround = document.createElement('div');
   divAround.setAttribute('id', 'div-around');
   main.appendChild(divAround);
   var text = document.createElement('h1');
-  text.setAttribute('class', 'padding-startscreen');
+  text.setAttribute('class', 'padding-end-screen');
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
-
   var resetButton = document.createElement('button');
   resetButton.innerHTML = "Play again?".toUpperCase();
   resetButton.setAttribute('class', 'button');

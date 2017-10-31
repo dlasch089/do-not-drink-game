@@ -3,15 +3,15 @@
 function CreateGame()  {
   this.challenge = [
     ["Click 'left'!", "right", "left", "true", "false"],
-    // ["Click the button on the right!", "right", "left", "true", "false"],
-    // ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
-    // ["Don't click any button!", "Why..", "..not?", "true", "true"],
-    // ["Press play!", "Play!", "|>", "false", "true"],
-    // ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
-    // ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
-    // ["CLICK:", " ", "HERE!", "true", "false"],
-    // ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
-    // ["Click opposite of 'right'", "left ", "right", "false", "true"],
+    ["Click the button on the right!", "right", "left", "true", "false"],
+    ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
+    ["Don't click any button!", "Why..", "..not?", "true", "true"],
+    ["Press play!", "Play!", "|>", "false", "true"],
+    ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
+    ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
+    ["CLICK:", " ", "HERE!", "true", "false"],
+    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    ["Click opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;

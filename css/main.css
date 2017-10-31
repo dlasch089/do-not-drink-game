@@ -140,4 +140,7 @@ header, footer, main {
   button {
     max-height: 2em;
   }
+  .padding-startscreen {
+    padding: 20% 0 0;
+  }
 }

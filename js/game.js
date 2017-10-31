@@ -3,15 +3,15 @@
 function CreateGame()  {
   this.challenge = [
     ["Click 'left'!", "right", "left", "true", "false"],
-    ["Click the button on the right!", "right", "left", "true", "false"],
-    ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
-    ["Don't click any button!", "Why..", "..not?", "true", "true"],
-    ["Press play!", "Play!", "|>", "false", "true"],
-    ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
-    ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
-    ["CLICK:", " ", "HERE!", "true", "false"],
-    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
-    ["Click opposite of 'right'", "left ", "right", "false", "true"],
+    // ["Click the button on the right!", "right", "left", "true", "false"],
+    // ["NaN is not equal to: ", "a number", "NaN", "false", "true"],
+    // ["Don't click any button!", "Why..", "..not?", "true", "true"],
+    // ["Press play!", "Play!", "|>", "false", "true"],
+    // ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
+    // ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
+    // ["CLICK:", " ", "HERE!", "true", "false"],
+    // ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    // ["Click opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -22,11 +22,11 @@ function CreateGame()  {
 
 }
 
-function rules() {
+CreateGame.prototype.rules = function() {
   console.log('The rules are easy!');
-}
+};
 
-function startScreen() {
+CreateGame.prototype.startScreen = function() {
   var self = this;
   var main = document.getElementById('main');
   var divAround = document.createElement('div');
@@ -51,47 +51,48 @@ function startScreen() {
   divAround.appendChild(resetButton);
   //Add Click-Events:
   startButton.addEventListener('click', function() {
-    getReady();
+    self.getReady();
   });
 
   resetButton.addEventListener('click', function() {
-    rules();
+    self.rules();
   });
-}
+};
 
 
 
-function getReady() {
-  deleteGame();
+CreateGame.prototype.getReady = function() {
+  var self = this;
+  this.deleteGame();
   var getReadyNumbers = document.createElement('h1');
   // getReadyNumbers.setAttribute('class', 'padding-startscreen');
   getReadyNumbers.setAttribute('class', 'getReady');
   getReadyNumbers.innerText = 3;
-  game.main.appendChild(getReadyNumbers);
+  this.main.appendChild(getReadyNumbers);
   var reminder = document.createElement('h1');
   // reminder.setAttribute('class', 'padding-startscreen');
   reminder.innerText = 'DO THE OPPOSITE!';
-  game.main.appendChild(reminder);
+  this.main.appendChild(reminder);
   setInterval(function() {
     getReadyNumbers.innerText -= 1;
   }, 1000);
   setTimeout(function() {
-    game.startGame("startScreen");
+    self.startGame("startScreen");
   }, 3000);
 
-}
+};
 
 CreateGame.prototype.startGame = function(screenBefore) {
   if (screenBefore === "startScreen") {
     console.log("Let's start the Game!!");
-    deleteGame();
+    this.deleteGame();
     this.buildGame();
     this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
   } else if (this.challengeCopy.length === 0) {
     this.gameWon();
   } else {
-    deleteGame();
+    this.deleteGame();
     this.buildGame();
     this.pickChallenge();
   }
@@ -142,7 +143,7 @@ CreateGame.prototype.showScore = function() {
   scoreSection.appendChild(scoreTitle);
   scoreSection.appendChild(scoreTitle);
   var numbers = document.createElement('p');
-  numbers.innerHTML = game.score;
+  numbers.innerHTML = this.score;
   scoreSection.appendChild(numbers);
   var levels = document.createElement('p');
   levels.innerHTML = ' /' + this.challengeLength;
@@ -151,45 +152,48 @@ CreateGame.prototype.showScore = function() {
 
 
 CreateGame.prototype.startTimeOut = function() {
+  var self = this;
   var timer = document.getElementById('timer');
   setInterval(function() {
     timer.innerText -= 1;
   }, 1000);
   this.endTimer = setTimeout(function() {
-    gameOver();
+    self.gameOver();
   }, this.timeOut * 1200);
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {
+  // var self = this;
   var validate = answer;
   if (validate === "true") {
-    game.score += 1;
+    this.score += 1;
     this.startGame("gameBefore");
   } else {
-    gameOver();
+    this.gameOver();
   }
 };
 
-function deleteGame() {
-  game.header.innerHTML = "";
-  game.main.innerHTML = "";
-  game.footer.innerHTML = "";
-}
-
-function gameOver() {
-  deleteGame();
-  clearTimeout(game.endTimer);
-  statusMessage("GameOver - go home!");
-  // startScreen();
-}
-
-CreateGame.prototype.gameWon = function() {
-  deleteGame();
-  clearTimeout(game.endTimer);
-  statusMessage("You're focused! Everybody raise their glasses!");
+CreateGame.prototype.deleteGame = function() {
+  this.header.innerHTML = "";
+  this.main.innerHTML = "";
+  this.footer.innerHTML = "";
 };
 
-function statusMessage(status) {
+CreateGame.prototype.gameOver = function() {
+  this.deleteGame();
+  clearTimeout(this.endTimer);
+  this.statusMessage("GameOver - go home!");
+  // startScreen();
+};
+
+CreateGame.prototype.gameWon = function() {
+  this.deleteGame();
+  clearTimeout(this.endTimer);
+  this.statusMessage("You're focused! Everybody raise their glasses!");
+};
+
+CreateGame.prototype.statusMessage = function(status) {
+  var self = this;
   var main = document.getElementById('main');
   var divAround = document.createElement('div');
   divAround.setAttribute('id', 'div-around');
@@ -205,11 +209,11 @@ function statusMessage(status) {
   resetButton.setAttribute('id', 'ghost-btn');
   divAround.appendChild(resetButton);
   resetButton.addEventListener('click', function() {
-    deleteGame();
-    game.resetScore();
-    getReady();
+    self.deleteGame();
+    self.resetScore();
+    self.getReady();
   });
-}
+};
 
 CreateGame.prototype.resetScore = function() {
   this.score = 0;

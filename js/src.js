@@ -1,11 +1,11 @@
 'use strict';
 
-var game;
+// var game;
 
 $(document).ready(function() {
 
-  game = new CreateGame();
-  startScreen();
+  var game = new CreateGame();
+  game.startScreen();
 
 
   console.log('validated!');

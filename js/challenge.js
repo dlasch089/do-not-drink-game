@@ -5,7 +5,7 @@ CreateGame.prototype.copyChallenge = function() {
 };
 
 CreateGame.prototype.pickChallenge = function() {
-  var randomNumber = Math.floor(Math.random() * game.challengeCopy.length);
+  var randomNumber = Math.floor(Math.random() * this.challengeCopy.length);
   var array = this.challengeCopy;
   var challenge = this.challengeCopy[randomNumber];
 
@@ -14,6 +14,7 @@ CreateGame.prototype.pickChallenge = function() {
 };
 
 CreateGame.prototype.createChallenge = function(array) {
+  var self = this;
   this.action = document.getElementById('action-section');
   this.buttonLeft = this.action.children[0];
   this.buttonRight = this.action.children[1];
@@ -23,10 +24,10 @@ CreateGame.prototype.createChallenge = function(array) {
 
   this.buttonLeft.addEventListener('click', function() {
     // console.log(array[3]);
-    game.validateAnswer(array[3]);
+    self.validateAnswer(array[3]);
   });
   this.buttonRight.addEventListener('click', function() {
     // console.log(array[4]);
-    game.validateAnswer(array[4]);
+    self.validateAnswer(array[4]);
   });
 };

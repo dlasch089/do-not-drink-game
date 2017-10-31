@@ -27,6 +27,7 @@ function rules() {
 }
 
 function startScreen() {
+  var self = this;
   var main = document.getElementById('main');
   var divAround = document.createElement('div');
   divAround.setAttribute('id', 'div-around');
@@ -36,13 +37,13 @@ function startScreen() {
   text.innerHTML = 'Do The Opposite!'.toUpperCase();
   text.setAttribute('class', 'padding-startscreen');
   divAround.appendChild(text);
-  // Display the Reset-Button:
+  // Display the Start-Button:
   var startButton = document.createElement('button');
   startButton.innerHTML = "Let's Go!".toUpperCase();
   startButton.setAttribute('class', 'button');
   startButton.setAttribute('id', 'attention-btn');
   divAround.appendChild(startButton);
-  // Display the Reset-Button:
+  // Display the Rules-Button:
   var resetButton = document.createElement('button');
   resetButton.innerHTML = "Rules".toUpperCase();
   resetButton.setAttribute('class', 'button');

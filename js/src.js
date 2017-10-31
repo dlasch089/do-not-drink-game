@@ -1,9 +1,10 @@
 'use strict';
 
-var game = new CreateGame();
-var array = game.challenge[0];
+var game;
+
 $(document).ready(function() {
 
+  game = new CreateGame();
   startScreen();
 
 

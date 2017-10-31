@@ -122,3 +122,11 @@ header, footer, main {
   align-self: flex-end;
   font-size: 3rem;
 }
+
+/* ---- Start the big Screen Design ---- */
+
+@media (min-width: 960px) {
+  #action-section {
+    padding: 2% 0;
+  }
+}

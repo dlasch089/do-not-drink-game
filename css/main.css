@@ -46,12 +46,23 @@ button {
   font-weight: bolder;
 }
 
+#ghost-btn:hover {
+  background: white;
+  border-color: white;
+  color: #7bf7ab;
+  /* border-style: none; */
+  border-style: solid;
+  border-width: 3px;
+  transition: 0.5s;
+}
+
 #ghost-btn {
   background: transparent;
   border-color: #F2F2F2;
   color: white;
   border-style: solid;
   border-width: 3px;
+  transition: 0.5s;
 }
 
 #attention-btn {
@@ -61,6 +72,16 @@ button {
   /* border-style: none; */
   border-style: solid;
   border-width: 3px;
+  transition: 0.5s;
+}
+
+#attention-btn:hover {
+  background: transparent;
+  border-color: #F2F2F2;
+  color: white;
+  border-style: solid;
+  border-width: 3px;
+  transition: 0.5s;
 }
 
 #action-section {

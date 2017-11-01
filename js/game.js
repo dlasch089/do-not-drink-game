@@ -16,6 +16,7 @@ function CreateGame()  {
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
   this.score = 0;
+  this.numberOfLevels = 5;
   this.header = document.getElementById('header');
   this.main = document.getElementById('main');
   this.footer = document.getElementById('footer');
@@ -34,96 +35,13 @@ function CreateGame()  {
   ];
 }
 
-CreateGame.prototype.rules = function() {
-  var popUp = document.createElement('div');
-  popUp.setAttribute('class', 'pop-up');
-  this.container.insertBefore(popUp, this.header);
-  var rulesHeadline = document.createElement('h1');
-  rulesHeadline.innerHTML = "It's easy:".toUpperCase();
-  popUp.appendChild(rulesHeadline);
-  var rulesWin = document.createElement('p');
-  rulesWin.innerHTML = "// if you lose, you have to drink!".toUpperCase();
-  popUp.appendChild(rulesWin);
-  var rulesLose = document.createElement('p');
-  rulesLose.innerHTML = "// If you win, everbody else has to drink!".toUpperCase();
-  popUp.appendChild(rulesLose);
-  var closeButton = document.createElement('button');
-  closeButton.innerHTML = "close".toUpperCase();
-  closeButton.setAttribute('class', 'button');
-  closeButton.setAttribute('id', 'close-btn');
-  popUp.appendChild(closeButton);
-  closeButton.addEventListener('click', function() {
-    popUp.style.opacity = '0';
-    setTimeout(function() {
-      popUp.remove();
-    }, 500);
-  });
-};
-
-CreateGame.prototype.startScreen = function() {
-  var self = this;
-  var main = document.getElementById('main');
-  var divAround = document.createElement('div');
-  divAround.setAttribute('id', 'div-around');
-  main.appendChild(divAround);
-  // Display the name of the Game:
-  var text = document.createElement('h1');
-  text.innerHTML = 'Do The Opposite!'.toUpperCase();
-  text.setAttribute('class', 'padding-start-screen');
-  divAround.appendChild(text);
-  // Display the Start-Button:
-  var startButton = document.createElement('button');
-  startButton.innerHTML = "Let's Go!".toUpperCase();
-  startButton.setAttribute('class', 'button');
-  startButton.setAttribute('id', 'attention-btn');
-  divAround.appendChild(startButton);
-  // Display the Rules-Button:
-  var resetButton = document.createElement('button');
-  resetButton.innerHTML = "Rules".toUpperCase();
-  resetButton.setAttribute('class', 'button');
-  resetButton.setAttribute('id', 'ghost-btn');
-  divAround.appendChild(resetButton);
-  //Add Click-Events:
-  startButton.addEventListener('click', function() {
-    self.getReady();
-  });
-
-  resetButton.addEventListener('click', function() {
-    self.rules();
-  });
-};
-
-
-
-CreateGame.prototype.getReady = function() {
-  var self = this;
-  this.deleteGame();
-  var getReadyNumbers = document.createElement('h1');
-  // getReadyNumbers.setAttribute('class', 'padding-startscreen');
-  getReadyNumbers.setAttribute('class', 'getReady');
-  getReadyNumbers.innerText = 3;
-  this.main.appendChild(getReadyNumbers);
-  var reminder = document.createElement('h1');
-  // reminder.setAttribute('class', 'padding-startscreen');
-  reminder.innerText = 'DO THE OPPOSITE!';
-  this.main.appendChild(reminder);
-  setInterval(function() {
-    getReadyNumbers.innerText -= 1;
-  }, 1000);
-  setTimeout(function() {
-    self.startGame("startScreen");
-  }, 3000);
-};
-
 CreateGame.prototype.startGame = function(screenBefore) {
   if (screenBefore === "startScreen") {
     console.log("Let's start the Game!!");
     this.deleteGame();
-    this.chooseLevel();
     this.buildGame();
     this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
-
   } else if (this.score === this.numberOfLevels) {
     this.gameWon();
   } else {
@@ -264,6 +182,6 @@ CreateGame.prototype.resetScore = function() {
   this.score = 0;
 };
 
-CreateGame.prototype.chooseLevel = function() {
-  this.numberOfLevels = 2;
+CreateGame.prototype.chooseLevel = function(number) {
+  this.numberOfLevels = number;
 };

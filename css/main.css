@@ -92,6 +92,30 @@ h1 {
   color: #7bf7ab;
   border-style: solid;
   border-width: 3px;
+  min-width: 66%;
+}
+
+.level-pop-up {
+  width: 92%;
+  position: absolute;
+  background-color: #f5fffa;
+  color: #7bf7ab;
+  border: solid 10px #7bf7ab;
+  height: 96vh;
+  font-size: 2rem;
+  animation: fadein 0.5s;
+  justify-content: space-around;
+  opacity: 1;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#level-headline {
+  padding: 0% 0 15%;
 }
 
 .getReady {

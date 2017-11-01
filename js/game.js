@@ -8,10 +8,10 @@ function CreateGame()  {
     ["Don't click any button!", "Why..", "..not?", "true", "true"],
     ["Press play!", "Play!", "|>", "false", "true"],
     ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
-    // ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
-    // ["CLICK:", " ", "HERE!", "true", "false"],
-    // ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
-    // ["Click opposite of 'right'", "left ", "right", "false", "true"],
+    ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
+    ["CLICK:", " ", "HERE!", "true", "false"],
+    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    ["Click opposite of 'right'", "left ", "right", "false", "true"],
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -113,7 +113,6 @@ CreateGame.prototype.getReady = function() {
   setTimeout(function() {
     self.startGame("startScreen");
   }, 3000);
-
 };
 
 CreateGame.prototype.startGame = function(screenBefore) {

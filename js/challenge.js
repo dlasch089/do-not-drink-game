@@ -2,6 +2,7 @@
 
 CreateGame.prototype.copyChallenge = function() {
   this.challengeCopy = this.challenge.slice();
+  // this.challengeCopyLength = this.challengeCopy.length;
 };
 
 CreateGame.prototype.pickChallenge = function() {

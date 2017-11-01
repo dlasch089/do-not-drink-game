@@ -12,6 +12,7 @@ body {
   background: white;
   /*#35FFA6*/
   text-align: center;
+  overflow: hidden;
 }
 
 #container {

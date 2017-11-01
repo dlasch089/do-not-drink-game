@@ -23,6 +23,18 @@ body {
   animation: fadeIn 1s;
 }
 
+#pop-up-container {
+  height: 96vh;
+  /*box-shadow: 0em 0em 1em #DCDCDC;
+  margin: 1em;
+  background-color: #7bf7ab;
+  animation: fadeIn 1s;*/
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
 button {
   font-family: 'Roboto Slab', serif;
   /*min-width: 150px;*/
@@ -84,6 +96,7 @@ h1 {
   opacity: 1;
   -webkit-transition: opacity 500ms linear;
   transition: opacity 500ms linear;
+  box-shadow: 4px 2px 70px green;
 }
 
 #close-btn {
@@ -112,6 +125,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 4px 2px 70px green;
 }
 
 #level-headline {

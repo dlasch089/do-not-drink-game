@@ -45,9 +45,13 @@ CreateGame.prototype.startScreen = function() {
 };
 
 CreateGame.prototype.rules = function() {
+  var self = this;
+  var popUpContainer = document.createElement('div');
+  popUpContainer.setAttribute('id', 'pop-up-container');
+  this.container.insertBefore(popUpContainer, this.header);
   var popUp = document.createElement('div');
   popUp.setAttribute('class', 'pop-up');
-  this.container.insertBefore(popUp, this.header);
+  popUpContainer.appendChild(popUp);
   var rulesHeadline = document.createElement('h1');
   rulesHeadline.innerHTML = "It's easy:".toUpperCase();
   popUp.appendChild(rulesHeadline);
@@ -63,23 +67,26 @@ CreateGame.prototype.rules = function() {
   closeButton.setAttribute('id', 'close-btn');
   popUp.appendChild(closeButton);
   closeButton.addEventListener('click', function() {
+
     popUp.style.opacity = '0';
     setTimeout(function() {
-      popUp.remove();
+      popUpContainer.remove();
     }, 500);
   });
 };
 
 CreateGame.prototype.levels = function() {
   var self = this;
+  var popUpContainer = document.createElement('div');
+  popUpContainer.setAttribute('id', 'pop-up-container');
+  this.container.insertBefore(popUpContainer, this.header);
   var popUp = document.createElement('div');
   popUp.setAttribute('class', 'level-pop-up');
-  this.container.insertBefore(popUp, this.header);
+  popUpContainer.appendChild(popUp);
   var levelsHeadline = document.createElement('h1');
   levelsHeadline.setAttribute('id', 'level-headline');
   levelsHeadline.innerHTML = "Choose your drunk-level:".toUpperCase();
   popUp.appendChild(levelsHeadline);
-
   var levelOne = document.createElement('button');
   levelOne.innerHTML = "Drunk!".toUpperCase();
   levelOne.setAttribute('class', 'button');
@@ -89,7 +96,7 @@ CreateGame.prototype.levels = function() {
     popUp.style.opacity = '0';
     setTimeout(function() {
       self.chooseLevel(10);
-      popUp.remove();
+      popUpContainer.remove();
     }, 500);
   });
 
@@ -102,7 +109,7 @@ CreateGame.prototype.levels = function() {
     popUp.style.opacity = '0';
     setTimeout(function() {
       self.chooseLevel(7);
-      popUp.remove();
+      popUpContainer.remove();
     }, 500);
   });
 
@@ -115,7 +122,7 @@ CreateGame.prototype.levels = function() {
     popUp.style.opacity = '0';
     setTimeout(function() {
       self.chooseLevel(4);
-      popUp.remove();
+      popUpContainer.remove();
     }, 500);
   });
 };

@@ -23,18 +23,17 @@ body {
   animation: fadeIn 1s;
 }
 
+/*to make the pop-up responsive*/
+
 #pop-up-container {
   height: 96vh;
-  /*box-shadow: 0em 0em 1em #DCDCDC;
-  margin: 1em;
-  background-color: #7bf7ab;
-  animation: fadeIn 1s;*/
   display: flex;
   justify-content: center;
   -ms-align-items: center;
   align-items: center;
   position: fixed;
   width: 95vw;
+  /*it is important to give it a width!*/
 }
 
 button {

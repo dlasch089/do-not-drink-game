@@ -166,15 +166,25 @@ CreateGame.prototype.statusMessage = function(status) {
   text.setAttribute('class', 'padding-end-screen');
   text.innerHTML = ('' + status).toUpperCase();
   divAround.appendChild(text);
-  var resetButton = document.createElement('button');
-  resetButton.innerHTML = "Play again?".toUpperCase();
-  resetButton.setAttribute('class', 'button');
-  resetButton.setAttribute('id', 'ghost-btn');
-  divAround.appendChild(resetButton);
-  resetButton.addEventListener('click', function() {
+  var playAgain = document.createElement('button');
+  playAgain.innerHTML = "Play again?".toUpperCase();
+  playAgain.setAttribute('class', 'button');
+  playAgain.setAttribute('id', 'attention-btn');
+  divAround.appendChild(playAgain);
+  playAgain.addEventListener('click', function() {
     self.deleteGame();
     self.resetScore();
     self.getReady();
+  });
+  var startAgain = document.createElement('button');
+  startAgain.innerHTML = "Back to Start".toUpperCase();
+  startAgain.setAttribute('class', 'button');
+  startAgain.setAttribute('id', 'ghost-btn');
+  divAround.appendChild(startAgain);
+  startAgain.addEventListener('click', function() {
+    self.deleteGame();
+    self.resetScore();
+    self.startScreen();
   });
 };
 

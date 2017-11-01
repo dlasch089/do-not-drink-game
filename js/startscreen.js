@@ -45,7 +45,7 @@ CreateGame.prototype.startScreen = function() {
 };
 
 CreateGame.prototype.rules = function() {
-  var self = this;
+  // var self = this;
   var popUpContainer = document.createElement('div');
   popUpContainer.setAttribute('id', 'pop-up-container');
   this.container.insertBefore(popUpContainer, this.header);

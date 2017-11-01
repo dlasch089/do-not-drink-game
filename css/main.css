@@ -33,6 +33,8 @@ body {
   justify-content: center;
   -ms-align-items: center;
   align-items: center;
+  position: fixed;
+  width: 95vw;
 }
 
 button {
@@ -242,6 +244,10 @@ header, footer, main {
   #action-section button {
     padding: 2% 12%;
   }
+  #pop-up-container button {
+    padding: 2% 0%;
+    min-width: 37%;
+  }
   #div-around {
     /*height: 100vh;*/
     max-width: 70%;
@@ -255,5 +261,8 @@ header, footer, main {
   }
   .padding-end-screen {
     padding: 0 0;
+  }
+  #level-headline {
+    padding: 0% 0 0%;
   }
 }

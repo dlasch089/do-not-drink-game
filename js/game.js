@@ -113,8 +113,13 @@ CreateGame.prototype.startTimeOut = function() {
     timer.innerText -= 1;
   }, 1000);
   this.endTimer = setTimeout(function() {
-    self.gameOver();
-  }, this.timeOut * 1200);
+    this.main.children[0].setAttribute('class', 'false-answer');
+    self.failSound.currentTime = 0;
+    self.failSound.play();
+    setTimeout(function() {
+      self.gameOver();
+    }, 800);
+  }, this.timeOut * 1000);
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {
@@ -131,7 +136,6 @@ CreateGame.prototype.validateAnswer = function(answer) {
 
   } else {
     this.main.children[0].setAttribute('class', 'false-answer');
-    this.score += 1;
     self.failSound.currentTime = 0;
     self.failSound.play();
     setTimeout(function() {

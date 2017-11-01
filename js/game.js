@@ -35,6 +35,7 @@ function CreateGame()  {
   ];
   this.successSound = new Audio("sounds/success-button.mp3");
   this.failSound = new Audio("sounds/fail-button.mp3");
+  this.wonSound = new Audio("sounds/won-sound.mp3");
 }
 
 CreateGame.prototype.startGame = function(screenBefore) {
@@ -45,6 +46,7 @@ CreateGame.prototype.startGame = function(screenBefore) {
     this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
   } else if (this.score === this.numberOfLevels) {
+    this.wonSound.play();
     this.gameWon();
   } else {
     this.deleteGame();

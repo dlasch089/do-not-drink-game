@@ -46,24 +46,13 @@ button {
   font-weight: bolder;
 }
 
-#ghost-btn:hover {
-  background: white;
-  border-color: white;
-  color: #7bf7ab;
-  /* border-style: none; */
-  border-style: solid;
-  border-width: 3px;
-  transition: 0.5s;
-  opacity: 0.8;
-}
-
 #ghost-btn {
   background: transparent;
   border-color: #F2F2F2;
   color: white;
   border-style: solid;
   border-width: 3px;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 #attention-btn {
@@ -74,16 +63,6 @@ button {
   border-style: solid;
   border-width: 3px;
   transition: 0.5s;
-}
-
-#attention-btn:hover {
-  background: transparent;
-  border-color: #F2F2F2;
-  color: white;
-  border-style: solid;
-  border-width: 3px;
-  transition: 0.5s;
-  opacity: 0.8;
 }
 
 #action-section {
@@ -295,6 +274,25 @@ header, footer, main {
   #pop-up-container button {
     padding: 2% 0%;
     min-width: 37%;
+  }
+  #ghost-btn:hover {
+    background: white;
+    border-color: white;
+    color: #7bf7ab;
+    /* border-style: none; */
+    border-style: solid;
+    border-width: 3px;
+    transition: 0.2s;
+    opacity: 0.8;
+  }
+  #attention-btn:hover {
+    background: transparent;
+    border-color: #F2F2F2;
+    color: white;
+    border-style: solid;
+    border-width: 3px;
+    transition: 0.2s;
+    opacity: 0.8;
   }
   #close-btn:hover {
     min-width: 37%;

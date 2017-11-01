@@ -19,11 +19,11 @@ CreateGame.prototype.startScreen = function() {
   startButton.setAttribute('id', 'attention-btn');
   divAround.appendChild(startButton);
   // Display the Rules-Button:
-  var resetButton = document.createElement('button');
-  resetButton.innerHTML = "Rules".toUpperCase();
-  resetButton.setAttribute('class', 'button');
-  resetButton.setAttribute('id', 'ghost-btn');
-  divAround.appendChild(resetButton);
+  var rulesButton = document.createElement('button');
+  rulesButton.innerHTML = "Rules".toUpperCase();
+  rulesButton.setAttribute('class', 'button');
+  rulesButton.setAttribute('id', 'ghost-btn');
+  divAround.appendChild(rulesButton);
   // Display the Level-Button:
   var levelButton = document.createElement('button');
   levelButton.innerHTML = "levels".toUpperCase();
@@ -35,7 +35,7 @@ CreateGame.prototype.startScreen = function() {
     self.getReady();
   });
 
-  resetButton.addEventListener('click', function() {
+  rulesButton.addEventListener('click', function() {
     self.rules();
   });
 

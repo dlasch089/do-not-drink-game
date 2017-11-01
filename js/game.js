@@ -33,6 +33,8 @@ function CreateGame()  {
     "https://giphy.com/embed/MyU87LnclCPhS",
     "https://giphy.com/embed/1ryrwFNXqNjC8"
   ];
+  this.successSound = new Audio("sounds/success-button.mp3");
+  this.failSound = new Audio("sounds/fail-button.mp3");
 }
 
 CreateGame.prototype.startGame = function(screenBefore) {
@@ -121,6 +123,8 @@ CreateGame.prototype.validateAnswer = function(answer) {
   if (validate === "true") {
     this.main.children[0].setAttribute('class', 'true-answer');
     this.score += 1;
+    self.successSound.currentTime = 0;
+    self.successSound.play();
     setTimeout(function() {
       self.startGame("gameBefore");
     }, 80);
@@ -128,9 +132,11 @@ CreateGame.prototype.validateAnswer = function(answer) {
   } else {
     this.main.children[0].setAttribute('class', 'false-answer');
     this.score += 1;
+    self.failSound.currentTime = 0;
+    self.failSound.play();
     setTimeout(function() {
       self.gameOver();
-    }, 80);
+    }, 800);
 
   }
 };

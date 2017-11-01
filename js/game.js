@@ -10,8 +10,9 @@ function CreateGame()  {
     ["Donald Trump is..", "..an asshole", "..not racist!", "false", "true"],
     ["Wait for Timeout!", "..2..", "..1..!", "true", "true"],
     ["CLICK:", " ", "HERE!", "true", "false"],
-    ["Press the Ghost-Button!", "Ghost", "Ghost", "false", "true"],
+    ["Click the button with the Ghost", "Ghost", "<i class='fa fa-snapchat-ghost' aria-hidden='true'></i>", "true", "false"],
     ["Click opposite of 'right'", "left ", "right", "false", "true"],
+    ["Don't ring the bell!", "Don't do it!", "<i class='fa fa-bell-o' aria-hidden='true'></i>", "false", "true"]
   ];
   this.challengeLength = this.challenge.length;
   this.timeOut = 3;
@@ -74,6 +75,7 @@ CreateGame.prototype.showTimeOut = function() {
 };
 
 CreateGame.prototype.showChallenge = function() {
+  var buttonStyles = ['ghost-btn', 'attention-btn'];
   var command = document.createElement('h1');
   command.innerHTML = 'Long Command with placeholder!';
   this.main.appendChild(command);
@@ -84,8 +86,8 @@ CreateGame.prototype.showChallenge = function() {
   var buttonRight = document.createElement('button');
   buttonLeft.innerHTML = 'placeholder';
   buttonRight.innerHTML = 'placeholder';
-  buttonLeft.setAttribute('id', 'ghost-btn');
-  buttonRight.setAttribute('id', 'attention-btn');
+  buttonLeft.setAttribute('id', buttonStyles[Math.floor(Math.random() * buttonStyles.length)]);
+  buttonRight.setAttribute('id', buttonStyles[Math.floor(Math.random() * buttonStyles.length)]);
   action.appendChild(buttonLeft);
   action.appendChild(buttonRight);
 };
@@ -165,7 +167,7 @@ CreateGame.prototype.gameWon = function() {
   this.deleteGame();
   clearTimeout(this.endTimer);
   this.pickMeme(this.wonMemes);
-  this.statusMessage("Everybody raise their glasses!");
+  this.statusMessage("Raise your glasses!");
 };
 
 CreateGame.prototype.pickMeme = function(status) {

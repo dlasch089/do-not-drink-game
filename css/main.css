@@ -72,6 +72,10 @@ button {
   animation: fadein 1s;
 }
 
+#action-section button {
+  width: 50%;
+}
+
 h1 {
   font-weight: bolder;
   font-size: 3rem;
@@ -251,7 +255,8 @@ header, footer, main {
     padding: 0 0;
   }
   #action-section button {
-    padding: 2% 12%;
+    padding: 2% 8%;
+    width: 30%;
   }
   #pop-up-container button {
     padding: 2% 0%;

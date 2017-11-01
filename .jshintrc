@@ -11,6 +11,7 @@
     "game": true,
     "setInterval": true,
     "setTimeout": true,
-    "clearTimeout": true
+    "clearTimeout": true,
+    "Audio": true
   }
 }

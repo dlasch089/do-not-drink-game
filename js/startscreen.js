@@ -121,7 +121,7 @@ CreateGame.prototype.levels = function() {
   levelThree.addEventListener('click', function() {
     popUp.style.opacity = '0';
     setTimeout(function() {
-      self.chooseLevel(4);
+      self.chooseLevel(3);
       popUpContainer.remove();
     }, 500);
   });

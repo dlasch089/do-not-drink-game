@@ -205,6 +205,16 @@ header, footer, main {
   animation: fadein 1s;
 }
 
+.true-answer {
+  color: #4CD26F;
+  opacity: 1;
+}
+
+.false-answer {
+  color: #FFADA2;
+  opacity: 1;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;

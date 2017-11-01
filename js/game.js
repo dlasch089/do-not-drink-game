@@ -116,13 +116,22 @@ CreateGame.prototype.startTimeOut = function() {
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {
-  // var self = this;
+  var self = this;
   var validate = answer;
   if (validate === "true") {
+    this.main.children[0].setAttribute('class', 'true-answer');
     this.score += 1;
-    this.startGame("gameBefore");
+    setTimeout(function() {
+      self.startGame("gameBefore");
+    }, 80);
+
   } else {
-    this.gameOver();
+    this.main.children[0].setAttribute('class', 'false-answer');
+    this.score += 1;
+    setTimeout(function() {
+      self.gameOver();
+    }, 80);
+
   }
 };
 

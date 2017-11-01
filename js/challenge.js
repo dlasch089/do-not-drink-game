@@ -24,11 +24,9 @@ CreateGame.prototype.createChallenge = function(array) {
   this.buttonRight.innerHTML = array[2];
 
   this.buttonLeft.addEventListener('click', function() {
-    // console.log(array[3]);
     self.validateAnswer(array[3]);
   });
   this.buttonRight.addEventListener('click', function() {
-    // console.log(array[4]);
     self.validateAnswer(array[4]);
   });
 };

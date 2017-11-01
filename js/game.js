@@ -119,10 +119,12 @@ CreateGame.prototype.startGame = function(screenBefore) {
   if (screenBefore === "startScreen") {
     console.log("Let's start the Game!!");
     this.deleteGame();
+    this.chooseLevel();
     this.buildGame();
     this.copyChallenge(); //Copies the Challenge-Array (for the reset)
     this.pickChallenge();
-  } else if (this.challengeCopy.length === 0) {
+
+  } else if (this.score === this.numberOfLevels) {
     this.gameWon();
   } else {
     this.deleteGame();
@@ -179,7 +181,7 @@ CreateGame.prototype.showScore = function() {
   numbers.innerHTML = this.score;
   scoreSection.appendChild(numbers);
   var levels = document.createElement('p');
-  levels.innerHTML = ' /' + this.challengeLength;
+  levels.innerHTML = ' /' + this.numberOfLevels;
   scoreSection.appendChild(levels);
 };
 
@@ -260,4 +262,8 @@ CreateGame.prototype.statusMessage = function(status) {
 
 CreateGame.prototype.resetScore = function() {
   this.score = 0;
+};
+
+CreateGame.prototype.chooseLevel = function() {
+  this.numberOfLevels = 2;
 };

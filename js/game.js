@@ -116,14 +116,20 @@ CreateGame.prototype.startTimeOut = function() {
   setInterval(function() {
     timer.innerText -= 1;
   }, 1000);
+  this.redTimer = setTimeout(function() {
+    timer.setAttribute('class', 'false-answer');
+  }, this.timeOut * 1120);
+
   this.endTimer = setTimeout(function() {
-    this.main.children[0].setAttribute('class', 'false-answer');
+    // this.main.children[0].setAttribute('class', 'false-answer');
+    timer.setAttribute('class', 'false-answer');
     self.failSound.currentTime = 0;
-    self.failSound.play();
     // self.gameOver();
-    setTimeout(function() {
-      self.gameOver();
-    }, 200);
+    // setTimeout(function() {
+    this.main.children[0].setAttribute('class', 'false-answer');
+    // self.failSound.play();
+    self.gameOver();
+    // }, 200);
   }, this.timeOut * 1200);
 };
 
@@ -131,22 +137,23 @@ CreateGame.prototype.validateAnswer = function(answer) {
   var self = this;
   var validate = answer;
   if (validate === "true") {
+    clearTimeout(self.endTimer);
     this.main.children[0].setAttribute('class', 'true-answer');
     this.score += 1;
     self.successSound.currentTime = 0;
-    self.successSound.play();
     setTimeout(function() {
       self.startGame("gameBefore");
-    }, 200);
+      self.successSound.play();
+    }, 150);
 
   } else {
-    this.main.children[0].setAttribute('class', 'false-answer');
     clearTimeout(self.endTimer);
+    this.main.children[0].setAttribute('class', 'false-answer');
     self.failSound.currentTime = 0;
-    self.failSound.play();
     setTimeout(function() {
+
       self.gameOver();
-    }, 200);
+    }, 150);
 
   }
 };
@@ -158,10 +165,14 @@ CreateGame.prototype.deleteGame = function() {
 };
 
 CreateGame.prototype.gameOver = function() {
+  var self = this;
   this.deleteGame();
   clearTimeout(this.endTimer);
   this.pickMeme(this.lostMemes);
-  this.statusMessage("GameOver - go home!");
+  this.failSound.play();
+  setTimeout(function() {
+    self.statusMessage("GameOver - go home!");
+  }, 200);
   // startScreen();
 };
 

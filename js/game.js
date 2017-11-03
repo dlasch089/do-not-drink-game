@@ -120,10 +120,11 @@ CreateGame.prototype.startTimeOut = function() {
     this.main.children[0].setAttribute('class', 'false-answer');
     self.failSound.currentTime = 0;
     self.failSound.play();
+    // self.gameOver();
     setTimeout(function() {
       self.gameOver();
-    }, 800);
-  }, this.timeOut * 1000);
+    }, 200);
+  }, this.timeOut * 1200);
 };
 
 CreateGame.prototype.validateAnswer = function(answer) {
@@ -136,7 +137,7 @@ CreateGame.prototype.validateAnswer = function(answer) {
     self.successSound.play();
     setTimeout(function() {
       self.startGame("gameBefore");
-    }, 80);
+    }, 200);
 
   } else {
     this.main.children[0].setAttribute('class', 'false-answer');
@@ -145,7 +146,7 @@ CreateGame.prototype.validateAnswer = function(answer) {
     self.failSound.play();
     setTimeout(function() {
       self.gameOver();
-    }, 600);
+    }, 200);
 
   }
 };
